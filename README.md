@@ -1,6 +1,3 @@
-
----
-
 # **FileMasker**  
 
 **A file encryption and masking tool** that converts common files (like `.jpg`, `.txt`) into disguised formats (like `.iso`, `.bin`) with **AES-256-GCM encryption**, protecting your data with a strong password.  
