@@ -1,72 +1,78 @@
-# **FileMasker**
-
-**Uma ferramenta de criptografia e camuflagem de arquivos** que converte arquivos comuns (como `.jpg`, `.txt`) em formatos disfarçados (como `.iso`, `.bin`) com criptografia **AES-256-GCM**, protegendo seus dados com senha forte.  
 
 ---
 
-##  **Como Funciona?**  
+# **FileMasker**  
 
-1. **Criptografia Segura**:  
-   - Usa **AES-256-GCM** (padrão militar) para criptografia autenticada.  
-   - Deriva chaves usando **PBKDF2-HMAC-SHA256** (1.200.000 iterações).  
-   - Protege contra adulteração com **tags de autenticação (GCM)**.  
+**A file encryption and masking tool** that converts common files (like `.jpg`, `.txt`) into disguised formats (like `.iso`, `.bin`) with **AES-256-GCM encryption**, protecting your data with a strong password.  
 
-2. **Camuflagem de Arquivos**:  
-   - Transforma a extensão do arquivo (ex: `.jpg` → `.iso`) para disfarçar seu conteúdo.  
-   - Mantém o nome original seguro dentro do arquivo criptografado.  
+---  
 
-3. **Segurança Avançada**:  
-   - Previne ataques de **timing** e **injeção de caminhos**.  
-   - Apaga rastros com **exclusão segura** (3 passes de sobrescrita).  
+## **How It Works?**  
 
----
+1. **Secure Encryption**:  
+   - Uses **AES-256-GCM** (military-grade) for authenticated encryption.  
+   - Derives keys using **PBKDF2-HMAC-SHA256** (1,200,000 iterations).  
+   - Protects against tampering with **authentication tags (GCM)**.  
 
-## ⚙ **Como Usar?**  
+2. **File Masking**:  
+   - Changes the file extension (e.g., `.jpg` → `.iso`) to hide its content.  
+   - Keeps the original filename secure inside the encrypted file.  
 
-### **1 Criptografar um Arquivo**  
-```bash
-python3 filemasker.py encrypt -i arquivo_secreto.txt -o saida.png
-```
-- Será solicitada uma senha (**mínimo 12 caracteres**).  
-- O arquivo `saida.iso` conterá os dados criptografados.  
+3. **Advanced Security**:  
+   - Prevents **timing attacks** and **path injection**.  
+   - Erases traces with **secure deletion** (3-pass overwrite).  
 
-#### **Opções Adicionais**:  
-| Argumento       | Descrição                                  |  
-|-----------------|-------------------------------------------|  
-| `-i/--input`    | Arquivo de entrada (obrigatório)          |  
-| `-o/--output`   | Nome do arquivo de saída (padrão: `.enc`) |  
-| `-p/--password` | Senha (evite usar no terminal!)           |  
-| `--iterations`  | Iterações do PBKDF2 (padrão: 1.200.000)  |  
+---  
 
----
+## ⚙ **How to Use?**  
 
-### **2 Descriptografar um Arquivo**  
-```bash
-python3 filemasker.py decrypt -i saida.iso -o pasta_de_saida/
-```
-- O arquivo original (com extensão real) será restaurado na pasta especificada.  
+### **1. Encrypt a File**  
+```bash  
+python3 filemasker.py encrypt -i secret_file.txt -o output.png  
+```  
+- You will be prompted for a password (**minimum 12 characters**).  
+- The file `output.iso` will contain the encrypted data.  
 
-#### **Opções Adicionais**:  
-| Argumento       | Descrição                                  |  
-|-----------------|-------------------------------------------|  
-| `-i/--input`    | Arquivo criptografado (obrigatório)       |  
-| `-o/--output`   | Pasta/arquivo de saída (opcional)         |  
+#### **Additional Options**:  
+| Argument       | Description                                  |  
+|----------------|---------------------------------------------|  
+| `-i/--input`   | Input file (required)                       |  
+| `-o/--output`  | Output filename (default: `.enc`)           |  
+| `-p/--password`| Password (avoid typing in terminal!)        |  
+| `--iterations` | PBKDF2 iterations (default: 1,200,000)      |  
 
----
+---  
 
-##  **Boas Práticas de Segurança**  
- **Use senhas fortes** (mínimo 12 caracteres, misture símbolos, números e letras).  
- **Prefira arquivos de senha** em vez de digitar no terminal:  
-   ```bash
-   python3 filemasker.py encrypt -i foto.jpg -p "$(cat senha.txt)"
-   ```  
----
+### **2. Decrypt a File**  
+```bash  
+python3 filemasker.py decrypt -i output.iso -o output_folder/  
+```  
+- The original file (with its real extension) will be restored in the specified folder.  
 
-##  **Requisitos**  
+#### **Additional Options**:  
+| Argument       | Description                                  |  
+|----------------|---------------------------------------------|  
+| `-i/--input`   | Encrypted file (required)                   |  
+| `-o/--output`  | Output folder/file (optional)               |  
+
+---  
+
+## **Security Best Practices**  
+- **Use strong passwords** (minimum 12 characters, mix symbols, numbers, and letters).  
+- **Prefer password files** instead of typing in the terminal:  
+  ```bash  
+  python3 filemasker.py encrypt -i photo.jpg -p "$(cat password.txt)"  
+  ```  
+
+---  
+
+## **Requirements**  
 - Python 3.8+  
-- Bibliotecas: `cryptography`, `argparse`  
+- Libraries: `cryptography`, `argparse`  
 
-Instale as dependências com:  
-```bash
-pip install -r requirements.txt
-```
+Install dependencies with:  
+```bash  
+pip install -r requirements.txt  
+```  
+
+---  
